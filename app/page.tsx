@@ -111,18 +111,21 @@ export default function Home() {
               desc="A web application built with Next.js and Tailwind to solve a really interesting problem."
               tags={["React.js", "Node.js", "MongoDB"]}
               link="https://propertymanagmentfrontend.vercel.app/"
+              image="/property-management.png"
             />
             <ProjectCard
               title="Vehicle Regsitration system"
               desc="A cross-platform mobile utility app aimed at improving productivity."
               tags={["Next.js", "Nest.js", "PostgreSQL", "Prisma"]}
               link="http://vehicle-registration-system-nine.vercel.app/"
+              image="/vehicle-registration.png"
             />
             <ProjectCard
               title="Aura Interiors"
               desc="Interactive dashboard for visualizing complex data sets."
               tags={["Next.js", "Tailwind.css", "UI/UX"]}
               link="https://aura-interiors.vercel.app/"
+              image="/aura-interiors.png"
             />
           </div>
         </section>
