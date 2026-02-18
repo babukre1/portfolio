@@ -134,7 +134,7 @@ export default function Home() {
         <section className="mb-24">
           <h2 className="text-3xl font-bold mb-10 border-b pb-4">Experience</h2>
 
-          <div className="mb-16">
+          {/* <div className="mb-16">
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
               <span className="w-8 h-1 bg-green-500 rounded-full"></span>
               Work History
@@ -166,7 +166,7 @@ export default function Home() {
                 desc="Develops as frontend engineer. develops on full-stack projects."
               />
             </div>
-          </div>
+          </div> */}
 
           <div>
             <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
@@ -176,20 +176,32 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card
                 icon={<Trophy className="text-green-600" />}
-                title="Global Hackathon 2023 - Winner"
-                date="Jan 17, 2023"
-                desc="Global Hackathon 2023 - Winner - Winner"
+                title="SomNOG7 - Best Project"
+                date="Dec 20, 2024"
+                desc="SomNOG7 Workshops - software development track"
               />
               <Card
                 icon={<Globe className="text-green-600" />}
-                title="Global Hackathon 2023"
-                date="Jan 17, 2023"
-                desc="Global hackathon 2023 - Winner implementation and project planning..."
+                title="SomNOG8 - Best Project"
+                date="Dec 17, 2025"
+                desc="SomNOG8 Workshops - software development track..."
               />
               <Card
                 icon={<Atom className="text-green-600" />}
-                title="React Workshop - Mentor"
-                date="Jan 17, 2023"
+                title="Pycon Somalia hackathon"
+                date="Aug 20, 2023"
+                desc="React Workshop in client with Next.js & components..."
+              />
+              <Card
+                icon={<Atom className="text-green-600" />}
+                title="Pycon Somalia hackathon"
+                date="Aug 20, 2024"
+                desc="React Workshop in client with Next.js & components..."
+              />
+              <Card
+                icon={<Atom className="text-green-600" />}
+                title="Ramadan Challenge - MTI institute"
+                date="March 10, 2024"
                 desc="React Workshop in client with Next.js & components..."
               />
             </div>
@@ -198,8 +210,8 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="border-t pt-12 pb-8 text-center text-sm text-gray-500">
-          <p className="mb-2">Contact info · 012345 78790 or name@ginmai.com</p>
-          <p>Designed and Developed by [Name] with Next.js & Chakra UI</p>
+          <p className="mb-2">Contact info · 0611602428 or abubakrwindowz@gmail.com</p>
+          <p>Designed and Developed by [Abubakar Ali] with Next.js</p>
         </footer>
       </main>
     </div>
