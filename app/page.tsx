@@ -113,9 +113,9 @@ export default function Home() {
               link="https://propertymanagmentfrontend.vercel.app/"
             />
             <ProjectCard
-              title="Mobile Utility"
+              title="Vehicle Regsitration system"
               desc="A cross-platform mobile utility app aimed at improving productivity."
-              tags={["React Native", "Expo", "TypeScript"]}
+              tags={["Next.js", "Nest.js", "PostgreSQL", "Prisma"]}
               link="#"
             />
             <ProjectCard
