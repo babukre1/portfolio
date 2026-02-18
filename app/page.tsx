@@ -107,10 +107,10 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-10 border-b pb-4">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ProjectCard
-              title="Cool Web App"
+              title="Property Management System"
               desc="A web application built with Next.js and Tailwind to solve a really interesting problem."
-              tags={["Next.js", "React", "Tailwind"]}
-              link="#"
+              tags={["React.js", "Node.js", "MongoDB"]}
+              link="https://propertymanagmentfrontend.vercel.app/"
             />
             <ProjectCard
               title="Mobile Utility"
