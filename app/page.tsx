@@ -33,7 +33,7 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
             Hey there!, I'm{" "}
             <span className="text-black bg-gradient-to-r from-green-400/20 to-green-200/20 px-2 rounded-lg">
-              [Abubakar]
+              Abubakar
             </span>
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mb-8">
@@ -211,7 +211,7 @@ export default function Home() {
         {/* Footer */}
         <footer className="border-t pt-12 pb-8 text-center text-sm text-gray-500">
           <p className="mb-2">Contact info · 0611602428 or abubakrwindowz@gmail.com</p>
-          <p>Designed and Developed by [Abubakar Ali] with Next.js</p>
+          <p>Designed and Developed by Abubakar Ali with Next.js</p>
         </footer>
       </main>
     </div>
