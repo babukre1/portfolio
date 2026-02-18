@@ -116,13 +116,13 @@ export default function Home() {
               title="Vehicle Regsitration system"
               desc="A cross-platform mobile utility app aimed at improving productivity."
               tags={["Next.js", "Nest.js", "PostgreSQL", "Prisma"]}
-              link="#"
+              link="http://vehicle-registration-system-nine.vercel.app/"
             />
             <ProjectCard
-              title="Data Dashboard"
+              title="Aura Interiors"
               desc="Interactive dashboard for visualizing complex data sets."
-              tags={["Vue", "D3.js", "Firebase"]}
-              link="#"
+              tags={["Next.js", "Tailwind.css", "UI/UX"]}
+              link="https://aura-interiors.vercel.app/"
             />
           </div>
         </section>
