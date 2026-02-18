@@ -9,6 +9,7 @@ import {
   Calendar,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -46,7 +47,6 @@ export default function Home() {
             <Link href={"https://www.linkedin.com/in/abuubakarali/"}>
               <SocialButton icon={<Linkedin size={18} />} label="LinkedIn" />
             </Link>
-
             <Link
               href={
                 "https://mail.google.com/mail/u/0/?fs=1&to=abubakrwindowz@gmail.com"
@@ -65,10 +65,12 @@ export default function Home() {
               {/* Decorative dots background */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-[radial-gradient(#e5e7eb_2px,transparent_2px)] [background-size:12px_12px] -z-10 opacity-50 group-hover:opacity-100 transition-opacity" />
               <div className="w-48 h-48 rounded-2xl overflow-hidden bg-gray-200 grayscale hover:grayscale-0 transition-all duration-500 shadow-lg rotate-3 hover:rotate-0">
-                <img
-                  src="/api/placeholder/200/200"
+                <Image
+                  src="/profile.png"
                   alt="Profile"
                   className="w-full h-full object-cover"
+                  width={100}
+                  height={100}
                 />
               </div>
             </div>
