@@ -43,11 +43,9 @@ export default function Home() {
               <a className="button button-secondary" href={github} target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a>
               <a className="icon-button" href={linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={19} /></a>
             </div>
-            <div className="hero-focus" aria-label="Areas of focus"><span>Backend engineering</span><span>Full-stack systems</span><span>Digital services</span></div>
           </div>
           <div className="hero-visual" aria-label="Profile">
             <div className="portrait-wrap"><Image src="/profile.png" alt="Abubakar Ali Abdulle" width={520} height={620} priority sizes="(max-width: 768px) 80vw, 420px" /></div>
-            <div className="profile-note"><span>Based in</span><strong><MapPin size={15} /> Mogadishu, Somalia</strong></div>
           </div>
         </section>
 
