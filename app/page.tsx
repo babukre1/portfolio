@@ -1,88 +1,229 @@
 import Image from "next/image";
-import { ArrowRight, Building2, Code2, ExternalLink, Github, GraduationCap, Linkedin, Mail, MapPin, Menu, Trophy } from "lucide-react";
+import {
+  ArrowRight,
+  Download,
+  ExternalLink,
+  Github,
+  Linkedin,
+  Mail,
+  Menu,
+  Phone,
+  Trophy,
+} from "lucide-react";
 
-const github = "https://github.com/babukre1";
-const linkedin = "https://www.linkedin.com/in/abuubakarali/";
-const email = "mailto:abubakrwindowz@gmail.com";
-const navItems = ["About", "Experience", "Projects", "Achievements"];
+const links = {
+  github: "https://github.com/babukre1",
+  linkedin: "https://www.linkedin.com/in/abuubakarali/",
+  email: "mailto:abubakar4official@gmail.com",
+  phone: "tel:+252611602428",
+  cv: "/Abubakar-Ali-Abdulle-CV.pdf",
+};
 
-function ArrowLink({ href, children, external = false }: { href: string; children: React.ReactNode; external?: boolean }) {
-  return <a className="text-link" href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>{children}{external ? <ExternalLink size={14} aria-hidden="true" /> : <ArrowRight size={15} aria-hidden="true" />}</a>;
+const navItems = ["About", "Experience", "Projects", "Achievements", "Contact"];
+
+const toolkit = [
+  ["Backend", "Node.js, Express, NestJS, Prisma"],
+  ["Frontend", "React, Next.js"],
+  ["Mobile", "Flutter"],
+  ["Databases", "PostgreSQL, MongoDB"],
+  ["Tools", "Git, Docker, CI/CD, Kubernetes"],
+  ["Programming", "JavaScript, Python, Golang"],
+];
+
+function Tech({ children }: { children: React.ReactNode }) {
+  return <span className="tech">{children}</span>;
 }
-function Tag({ children }: { children: React.ReactNode }) { return <span className="tag">{children}</span>; }
+
+function ProjectLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noreferrer">
+      {children} <ExternalLink size={13} aria-hidden="true" />
+    </a>
+  );
+}
 
 export default function Home() {
   return (
     <div className="site-shell">
       <header className="site-header">
         <div className="nav-wrap">
-          <a href="#home" className="brand" aria-label="Abubakar Ali Abdulle, home">Abubakar<span>.</span></a>
-          <nav className="desktop-nav" aria-label="Primary navigation">{navItems.map((item) => <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>)}</nav>
-          <a className="nav-cta" href={email}>Contact <ArrowRight size={15} /></a>
-          <details className="mobile-menu"><summary aria-label="Open navigation"><Menu size={22} /></summary><nav aria-label="Mobile navigation">{navItems.map((item) => <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>)}</nav></details>
+          <a className="brand" href="#home" aria-label="Abubakar Ali Abdulle, home">
+            Abubakar<span>.</span>
+          </a>
+          <nav className="desktop-nav" aria-label="Primary navigation">
+            {navItems.map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>
+            ))}
+          </nav>
+          <a className="cv-link" href={links.cv} download>
+            Download CV <Download size={14} />
+          </a>
+          <details className="mobile-menu">
+            <summary aria-label="Open navigation"><Menu size={21} /></summary>
+            <nav aria-label="Mobile navigation">
+              {navItems.map((item) => (
+                <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>
+              ))}
+              <a href={links.cv} download>Download CV</a>
+            </nav>
+          </details>
         </div>
       </header>
 
       <main>
         <section className="hero section" id="home">
           <div className="hero-copy">
-            <div className="eyebrow"><span className="status-dot" /> Open to software engineering opportunities</div>
-            <p className="hero-kicker">Abubakar Ali Abdulle</p>
-            <h1>Software Engineer building reliable digital systems.</h1>
-            <p className="hero-lede">I build web, mobile, and backend systems that solve real-world problems—from multi-role business platforms to digital public-service workflows.</p>
+            <p className="eyebrow">Backend · Full-stack · Mobile · Digital systems</p>
+            <h1>Abubakar Ali Abdulle</h1>
+            <p className="hero-role">Software Engineer</p>
+            <h2>Building practical web, mobile, backend, and digital systems.</h2>
+            <p className="hero-summary">
+              Software Engineer with hands-on experience building complete platforms,
+              backend APIs, administrative systems, and digital service workflows.
+            </p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#projects">View my work <ArrowRight size={17} /></a>
-              <a className="button button-secondary" href={github} target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a>
-              <a className="icon-button" href={linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={19} /></a>
+              <a className="button primary" href="#projects">View projects <ArrowRight size={16} /></a>
+              <a className="button secondary" href={links.cv} download>Download CV <Download size={16} /></a>
+            </div>
+            <div className="social-links">
+              <a href={links.github} target="_blank" rel="noreferrer"><Github size={15} /> GitHub</a>
+              <a href={links.linkedin} target="_blank" rel="noreferrer"><Linkedin size={15} /> LinkedIn</a>
             </div>
           </div>
-          <div className="hero-visual" aria-label="Profile">
-            <div className="portrait-wrap"><Image src="/profile.png" alt="Abubakar Ali Abdulle" width={520} height={620} priority sizes="(max-width: 768px) 80vw, 420px" /></div>
+          <Image
+            className="hero-photo"
+            src="/profile.png"
+            alt="Abubakar Ali Abdulle"
+            width={320}
+            height={380}
+            priority
+            sizes="(max-width: 720px) 220px, 300px"
+          />
+        </section>
+
+        <section className="section content-section" id="about">
+          <div className="section-intro">
+            <p className="section-label">About</p>
+            <h2>Practical software for real workflows.</h2>
+          </div>
+          <div className="about-content">
+            <div className="about-copy">
+              <p>I am a Software Engineer focused on building practical digital systems across web, mobile, and backend platforms.</p>
+              <p>My experience includes REST APIs, administrative dashboards, mobile applications, databases, authentication, and multi-role business workflows. I have also led two award-winning digital-government projects through SomNOG.</p>
+            </div>
+            <dl className="toolkit" aria-label="Technical toolkit">
+              {toolkit.map(([label, value]) => (
+                <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+              ))}
+            </dl>
           </div>
         </section>
 
-        <section className="stats section" aria-label="Professional highlights">
-          <div><strong>2×</strong><span>SomNOG Best Project Winner</span></div><div><strong>6 months</strong><span>Industry internship experience</span></div><div><strong>4</strong><span>Complete systems highlighted</span></div><div><strong>Web + Mobile</strong><span>Multi-platform development</span></div>
-        </section>
-
-        <section className="section split-section" id="about">
-          <div><p className="section-label">01 / About</p><h2>Practical engineering, grounded in real workflows.</h2></div>
-          <div className="about-copy"><p>I am a Software Engineer focused on designing and building practical digital systems. My experience spans backend APIs, web applications, mobile applications, database-driven platforms, and administrative systems.</p><p>I built production-oriented projects during a six-month software development internship and currently contribute to an internal ERP platform for a Nairobi-based technology startup. I also led award-winning digital-government projects at SomNOG7 and SomNOG8.</p><div className="about-toolkit"><strong>Core toolkit</strong><span>Node.js · NestJS · React · Next.js · PostgreSQL · MongoDB · Flutter · Docker</span></div></div>
-        </section>
-
-        <section className="section" id="experience">
-          <div className="section-heading"><div><p className="section-label">02 / Experience</p><h2>Building systems beyond the classroom.</h2></div><p>Hands-on experience across architecture, APIs, databases, administrative interfaces, mobile apps, deployment, and team collaboration.</p></div>
-          <div className="timeline">
-            <article className="timeline-item"><div className="timeline-marker" /><div className="timeline-meta"><span>Current</span><strong>Nairobi-based technology startup</strong></div><div className="timeline-content"><h3>Software Developer</h3><p>Contributing to an internal Mini ERP that supports business workflows and day-to-day operations, with work spanning backend architecture, database design, APIs, and administrative interfaces.</p><div className="tag-list"><Tag>Mini ERP</Tag><Tag>Business workflows</Tag><Tag>Backend architecture</Tag></div></div></article>
-            <article className="timeline-item"><div className="timeline-marker" /><div className="timeline-meta"><span>6 months</span><strong>Tabaarak ICT Solutions</strong></div><div className="timeline-content"><h3>Software Developer Intern</h3><p>Worked on complete web and mobile products, including REST APIs, authentication and authorization, database-backed workflows, deployment, and Git-based collaboration.</p><ul className="compact-list"><li><strong>Fuel Price Tracking System:</strong> web administration, supplier and consumer mobile apps, and a shared backend API.</li><li><strong>Hall Booking System:</strong> admin dashboard, manager and customer mobile apps, and a multi-role booking API.</li></ul></div></article>
+        <section className="section content-section" id="experience">
+          <div className="section-intro">
+            <p className="section-label">Experience</p>
+            <h2>Real-world software development.</h2>
           </div>
-        </section>
-
-        <section className="section" id="projects">
-          <div className="section-heading"><div><p className="section-label">03 / Featured work</p><h2>Complete systems, not isolated demos.</h2></div><p>Selected work showing how I translate real operational problems into structured, multi-role digital products.</p></div>
-          <div className="featured-grid">
-            <article className="project-card project-featured">
-              <div className="project-image"><Image src="/vehicle-registration.png" alt="Vehicle Registration and Verification System interface" fill sizes="(max-width: 900px) 100vw, 50vw" /></div>
-              <div className="project-body"><div className="badge-row"><span className="award-badge"><Trophy size={14} /> 1st Place — SomNOG8</span><span className="category-badge">Digital Government Project</span></div><p className="project-index">Featured project / 01</p><h3>Vehicle Registration &amp; Verification System</h3><p>A digital public-service workflow for online vehicle registration, administrative review, approval or rejection, and record verification. I led development of the role-based system and its structured backend workflow.</p><div className="component-list"><span>Citizen submission</span><span>Administrative review</span><span>Vehicle verification</span></div><div className="tag-list"><Tag>NestJS</Tag><Tag>PostgreSQL</Tag><Tag>Prisma</Tag><Tag>Next.js</Tag><Tag>Docker</Tag><Tag>Kubernetes</Tag></div><div className="project-links"><ArrowLink href="https://vehicle-registration-system-nine.vercel.app/" external>Live system</ArrowLink><ArrowLink href="https://github.com/somnog/Vehicle-Registration-System" external>Source code</ArrowLink></div></div>
+          <div className="experience-list">
+            <article className="experience-item">
+              <div className="experience-meta"><span>Present</span><strong>Fiddo Technology</strong><small>Nairobi, Kenya</small></div>
+              <div>
+                <h3>Software Engineer</h3>
+                <p>Contributing to an internal Mini ERP system used to manage business operations.</p>
+                <ul>
+                  <li>Building backend APIs and internal business workflows.</li>
+                  <li>Contributing to database design and software architecture.</li>
+                  <li>Developing administrative interfaces for internal operations.</li>
+                </ul>
+              </div>
             </article>
-            <article className="project-card project-featured">
-              <div className="project-image"><Image src="/property-management.png" alt="Property Registration System interface" fill sizes="(max-width: 900px) 100vw, 50vw" /></div>
-              <div className="project-body"><div className="badge-row"><span className="award-badge"><Trophy size={14} /> 1st Place — SomNOG7</span><span className="category-badge">Digital Government Project</span></div><p className="project-index">Featured project / 02</p><h3>Property Registration System</h3><p>A digital property and owner registration platform replacing manual paperwork with centralized records, administrative verification, approval workflows, and role-based access. I served as lead developer.</p><div className="component-list"><span>Digital registration</span><span>Centralized records</span><span>Approval workflow</span></div><div className="tag-list"><Tag>MongoDB</Tag><Tag>Express</Tag><Tag>React</Tag><Tag>Node.js</Tag></div><div className="project-links"><ArrowLink href="https://propertymanagmentfrontend.vercel.app/" external>Live system</ArrowLink><ArrowLink href="https://github.com/babukre1/SomNOG7-Property-Managment" external>Source code</ArrowLink></div></div>
+            <article className="experience-item">
+              <div className="experience-meta"><span>6-month internship</span><strong>Tabaarak ICT Solutions</strong><small>Mogadishu, Somalia</small></div>
+              <div>
+                <h3>Software Developer Intern</h3>
+                <p>Built and contributed to real-world web and mobile software with the engineering team.</p>
+                <ul>
+                  <li><strong>Fuel Price Tracking:</strong> admin web, supplier app, consumer app, and backend API.</li>
+                  <li><strong>Hall Booking:</strong> admin web, manager app, customer app, and backend API.</li>
+                  <li>Worked across REST APIs, databases, authentication, deployment, and Git collaboration.</li>
+                </ul>
+              </div>
             </article>
           </div>
-          <div className="supporting-grid">
-            <article className="supporting-card"><div className="card-icon"><MapPin /></div><p className="project-index">Industry project / 03</p><h3>Fuel Price Tracking System</h3><p>Helps consumers locate nearby fuel stations and compare prices while giving suppliers tools to maintain fuel information and administrators oversight of the platform.</p><div className="architecture"><strong>System components</strong><span>Admin web dashboard · Supplier Flutter app · Consumer Flutter app · REST API</span></div><div className="tag-list"><Tag>MongoDB</Tag><Tag>Express</Tag><Tag>React</Tag><Tag>Node.js</Tag><Tag>Flutter</Tag></div></article>
-            <article className="supporting-card"><div className="card-icon"><Building2 /></div><p className="project-index">Industry project / 04</p><h3>Hall Booking System</h3><p>A complete multi-role venue booking platform connecting customer reservations with manager operations and centralized administration.</p><div className="architecture"><strong>System components</strong><span>Admin web dashboard · Manager Flutter app · Customer Flutter app · Backend API</span></div><div className="tag-list"><Tag>PostgreSQL</Tag><Tag>Prisma</Tag><Tag>Express</Tag><Tag>React</Tag><Tag>Flutter</Tag></div></article>
+        </section>
+
+        <section className="section content-section" id="projects">
+          <div className="section-intro project-intro">
+            <div><p className="section-label">Projects</p><h2>Selected systems I have built.</h2></div>
+            <p>Four projects that show complete workflows across web, mobile, backend, and administration.</p>
+          </div>
+          <div className="projects-grid">
+            <article className="project featured">
+              <div className="project-labels"><span className="award"><Trophy size={13} /> SomNOG8 — 1st Place</span><span>Digital Government Project</span></div>
+              <h3>Vehicle Registration &amp; Verification System</h3>
+              <p>A digital platform for vehicle registration and verification, including online submissions, administrative review, approval or rejection, authentication, and centralized records.</p>
+              <p className="role"><strong>Role:</strong> Lead Developer</p>
+              <div className="tech-list"><Tech>NestJS</Tech><Tech>PostgreSQL</Tech><Tech>Prisma</Tech><Tech>Next.js</Tech><Tech>Docker</Tech><Tech>Kubernetes</Tech></div>
+              <div className="project-links"><ProjectLink href="https://vehicle-registration-system-nine.vercel.app/">Live demo</ProjectLink><ProjectLink href="https://github.com/somnog/Vehicle-Registration-System">GitHub</ProjectLink></div>
+            </article>
+            <article className="project featured">
+              <div className="project-labels"><span className="award"><Trophy size={13} /> SomNOG7 — 1st Place</span><span>Digital Government Project</span></div>
+              <h3>Property Registration System</h3>
+              <p>A digital property and owner registration platform replacing manual workflows with centralized records, administrative verification, approval, and role-based access.</p>
+              <p className="role"><strong>Role:</strong> Lead Developer</p>
+              <div className="tech-list"><Tech>MongoDB</Tech><Tech>Express</Tech><Tech>React</Tech><Tech>Node.js</Tech></div>
+              <div className="project-links"><ProjectLink href="https://propertymanagmentfrontend.vercel.app/">Live demo</ProjectLink><ProjectLink href="https://github.com/babukre1/SomNOG7-Property-Managment">GitHub</ProjectLink></div>
+            </article>
+            <article className="project">
+              <p className="project-type">Industry project</p>
+              <h3>Fuel Price Tracking System</h3>
+              <p>A multi-platform system that lets users compare fuel prices and discover nearby, lower-cost fuel stations.</p>
+              <p className="components">Admin Web · Supplier Mobile App · Consumer Mobile App</p>
+              <div className="tech-list"><Tech>MERN</Tech><Tech>Flutter</Tech></div>
+            </article>
+            <article className="project">
+              <p className="project-type">Industry project</p>
+              <h3>Hall Booking System</h3>
+              <p>A multi-role booking platform with separate workflows for administrators, venue managers, and customers.</p>
+              <p className="components">Admin Web · Manager Mobile App · Customer Mobile App</p>
+              <div className="tech-list"><Tech>PostgreSQL</Tech><Tech>Prisma</Tech><Tech>Express</Tech><Tech>React</Tech><Tech>Flutter</Tech></div>
+            </article>
           </div>
         </section>
 
-        <section className="section achievement-layout" id="achievements">
-          <div><p className="section-label">04 / Recognition</p><h2>Achievements &amp; education.</h2><p className="muted">Competition wins and community participation supporting a strong technical foundation.</p></div>
-          <div className="achievement-list"><article className="achievement major"><Trophy /><div><span>2025 · Software Development Track</span><h3>1st Place — SomNOG8</h3></div><strong>Best Project</strong></article><article className="achievement major"><Trophy /><div><span>2024 · Software Development Track</span><h3>1st Place — SomNOG7</h3></div><strong>Best Project</strong></article><article className="achievement"><Code2 /><div><span>2024 &amp; 2025</span><h3>PyCon Somalia Participant</h3></div></article><article className="achievement"><Code2 /><div><span>2025</span><h3>MTI Institute Hackathon Participant</h3></div></article><article className="education-card"><GraduationCap /><div><span>Expected September 2026</span><h3>Bachelor in Computer Applications</h3><p>Jamhuuriya University of Science &amp; Technology</p><div className="education-metrics"><strong>3.8 CGPA</strong><strong>Top 5% of department</strong></div></div></article></div>
+        <section className="section content-section" id="achievements">
+          <div className="section-intro">
+            <p className="section-label">Achievements</p>
+            <h2>Recognition and participation.</h2>
+          </div>
+          <div className="achievement-list">
+            <article className="achievement major"><span>2025</span><h3>1st Place — SomNOG8 Software Development Track</h3><strong>Winner</strong></article>
+            <article className="achievement major"><span>2024</span><h3>1st Place — SomNOG7 Software Development Track</h3><strong>Winner</strong></article>
+            <article className="achievement"><span>2025</span><h3>PyCon Somalia Participant</h3></article>
+            <article className="achievement"><span>2024</span><h3>PyCon Somalia Participant</h3></article>
+            <article className="achievement"><span>2025</span><h3>MTI Institute Hackathon Participant</h3></article>
+          </div>
         </section>
 
+        <section className="contact section" id="contact">
+          <div>
+            <p className="section-label">Contact</p>
+            <h2>Let&apos;s connect.</h2>
+            <p>I&apos;m open to Software Engineering, Backend, Full-Stack, and digital systems opportunities.</p>
+          </div>
+          <div className="contact-details">
+            <a href={links.email}><Mail size={16} /><span><small>Email</small>abubakar4official@gmail.com</span></a>
+            <a href={links.phone}><Phone size={16} /><span><small>Phone</small>+252 611602428</span></a>
+            <a href={links.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} /><span><small>LinkedIn</small>View profile</span></a>
+            <a href={links.github} target="_blank" rel="noreferrer"><Github size={16} /><span><small>GitHub</small>babukre1</span></a>
+          </div>
+        </section>
       </main>
-      <footer className="site-footer section"><div><a href="#home" className="brand">Abubakar<span>.</span></a><p>Open to Software Engineering, Backend, Full-Stack, and digital-systems opportunities.</p></div><div className="footer-links"><a href={email}><Mail size={15} /> Email</a><a href={github} target="_blank" rel="noreferrer">GitHub</a><a href={linkedin} target="_blank" rel="noreferrer">LinkedIn</a></div><p>© {new Date().getFullYear()}</p></footer>
+
+      <footer className="site-footer section">
+        <p>© {new Date().getFullYear()} Abubakar Ali Abdulle</p>
+        <div><a href={links.github} target="_blank" rel="noreferrer">GitHub</a><a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></div>
+      </footer>
     </div>
   );
 }
