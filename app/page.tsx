@@ -192,20 +192,34 @@ export default function Home() {
               <header className="fuel-case-header">
                 <div>
                   <p className="project-type">Multi-platform industry project</p>
-                  <h3>Fuel Price Tracking System</h3>
-                  <p>A complete platform connecting administrators, fuel suppliers, and consumers through dedicated web and mobile experiences.</p>
+                  <h3>SomFuel — Fuel Price Tracking System</h3>
+                  <p>A full-stack platform that helps customers find nearby stations and compare current prices while giving suppliers and administrators controlled tools to keep fuel-price data accurate.</p>
+                  <p className="system-stack">2 Flutter apps · React admin dashboard · Node.js/Express API · MongoDB</p>
                 </div>
                 <div className="fuel-meta">
                   <p className="project-role"><UserRound size={18} /><span><small>My role</small>Software Developer Intern</span></p>
-                  <div className="tech-list"><Tech>React</Tech><Tech>Node.js</Tech><Tech>MongoDB</Tech><Tech>Flutter</Tech></div>
+                  <div className="tech-list"><Tech>React</Tech><Tech>Flutter</Tech><Tech>Node.js</Tech><Tech>Express</Tech><Tech>MongoDB</Tech><Tech>Firebase</Tech></div>
                 </div>
               </header>
+
+              <section className="price-workflow" aria-labelledby="price-workflow-title">
+                <div className="workflow-heading">
+                  <span>Core workflow</span>
+                  <h4 id="price-workflow-title">From supplier update to trusted customer price</h4>
+                </div>
+                <ol>
+                  <li><span>01</span><div><strong>Supplier submits</strong><p>Current petrol, diesel, or kerosene prices.</p></div></li>
+                  <li><span>02</span><div><strong>Backend validates</strong><p>Server rules identify suspicious price changes.</p></div></li>
+                  <li><span>03</span><div><strong>Admin reviews</strong><p>Flagged updates are checked before publication.</p></div></li>
+                  <li><span>04</span><div><strong>Customers are informed</strong><p>The accepted price goes live, history is preserved, and followers can be notified.</p></div></li>
+                </ol>
+              </section>
 
               <section className="system-surface admin-surface" aria-labelledby="admin-surface-title">
                 <div className="surface-copy">
                   <span>01 · Admin web</span>
                   <h4 id="admin-surface-title">Platform administration</h4>
-                  <p>Central oversight for suppliers, stations, customer records, pricing activity, maps, and reports.</p>
+                  <p>Administrators manage users, suppliers, stations, prices, maps, reports, and notifications while reviewing suspicious updates flagged by backend validation.</p>
                 </div>
                 <div className="web-gallery">
                   <WebScreenshot src="/screenshots/fueltrack-admin/dashboard.png" alt="FuelTrack admin dashboard with network totals, recent stations, and supplier status" label="Network overview" featured />
@@ -220,7 +234,7 @@ export default function Home() {
                   <div className="surface-copy">
                     <span>02 · Supplier mobile app</span>
                     <h4 id="supplier-surface-title">Station and price operations</h4>
-                    <p>Suppliers manage stations, publish current fuel prices, and review price history from a dedicated Flutter app.</p>
+                    <p>Suppliers manage stations and branches, submit current prices, review history and reports, and receive administrative notifications.</p>
                   </div>
                   <div className="phone-gallery">
                     <PhoneScreenshot src="/screenshots/fueltrack-supplier/station-overview.jpeg" alt="Supplier app station overview with current fuel prices" label="Station overview" />
@@ -233,7 +247,7 @@ export default function Home() {
                   <div className="surface-copy">
                     <span>03 · Customer mobile app</span>
                     <h4 id="customer-surface-title">Fuel discovery experience</h4>
-                    <p>Customers compare nearby prices, review station history, save favorites, and open directions from a dedicated Flutter app.</p>
+                    <p>Customers search and filter nearby stations, compare prices, review history, save favorites, open directions, and receive price-change alerts.</p>
                   </div>
                   <div className="phone-gallery">
                     <PhoneScreenshot src="/screenshots/fueltrack-customer/nearby-stations.jpg" alt="Customer app listing nearby fuel stations with distance and current prices" label="Compare nearby" />
