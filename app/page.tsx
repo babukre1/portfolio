@@ -58,6 +58,17 @@ function ProjectLink({ href, children }: { href: string; children: React.ReactNo
   return <a href={href} target="_blank" rel="noreferrer">{children} <ExternalLink size={14} /></a>;
 }
 
+function PhoneScreenshot({ src, alt, label }: { src: string; alt: string; label: string }) {
+  return (
+    <figure className="phone-preview">
+      <a href={src} target="_blank" rel="noreferrer" aria-label={`Open ${label} screenshot`}>
+        <Image src={src} alt={alt} fill sizes="(max-width: 480px) 28vw, 150px" />
+      </a>
+      <figcaption>{label}</figcaption>
+    </figure>
+  );
+}
+
 export default function Home() {
   return (
     <div className="site-shell">
@@ -166,14 +177,56 @@ export default function Home() {
                 <div className="project-links"><ProjectLink href="https://propertymanagmentfrontend.vercel.app/">Live Demo</ProjectLink><ProjectLink href="https://github.com/babukre1/SomNOG7-Property-Managment">GitHub</ProjectLink></div>
               </div>
             </article>
-            <article className="project-showcase">
-              <div className="project-shot"><Image src="/screenshots/fuel_track_system.png" alt="Fuel Price Tracking System administration dashboard" fill sizes="(max-width: 760px) 100vw, 48vw" /></div>
-              <div className="project-content">
-                <p className="project-type">Industry project</p>
-                <h3>Fuel Price Tracking System</h3>
-                <p>A multi-platform system for comparing fuel prices, finding nearby lower-cost stations, and managing station information.</p>
-                <p className="project-role"><UserRound size={18} /><span><small>My role</small>Software Developer Intern</span></p>
-                <div className="tech-list"><Tech>Admin Web</Tech><Tech>Flutter</Tech><Tech>Node.js</Tech><Tech>MongoDB</Tech></div>
+            <article className="fuel-case-study">
+              <header className="fuel-case-header">
+                <div>
+                  <p className="project-type">Multi-platform industry project</p>
+                  <h3>Fuel Price Tracking System</h3>
+                  <p>A complete platform connecting administrators, fuel suppliers, and consumers through dedicated web and mobile experiences.</p>
+                </div>
+                <div className="fuel-meta">
+                  <p className="project-role"><UserRound size={18} /><span><small>My role</small>Software Developer Intern</span></p>
+                  <div className="tech-list"><Tech>React</Tech><Tech>Node.js</Tech><Tech>MongoDB</Tech><Tech>Flutter</Tech></div>
+                </div>
+              </header>
+
+              <section className="system-surface admin-surface" aria-labelledby="admin-surface-title">
+                <div className="surface-copy">
+                  <span>01 · Admin web</span>
+                  <h4 id="admin-surface-title">Platform administration</h4>
+                  <p>Central oversight for suppliers, stations, customer records, pricing activity, maps, and reports.</p>
+                </div>
+                <div className="admin-screenshot">
+                  <Image src="/screenshots/fuel_track_system.png" alt="FuelTrack web administration dashboard" fill sizes="(max-width: 760px) 100vw, 65vw" />
+                </div>
+              </section>
+
+              <div className="mobile-surfaces">
+                <section className="system-surface supplier-surface" aria-labelledby="supplier-surface-title">
+                  <div className="surface-copy">
+                    <span>02 · Supplier mobile app</span>
+                    <h4 id="supplier-surface-title">Station and price operations</h4>
+                    <p>Suppliers manage stations, publish current fuel prices, and review price history from a dedicated Flutter app.</p>
+                  </div>
+                  <div className="phone-gallery">
+                    <PhoneScreenshot src="/screenshots/fueltrack-supplier/station-overview.jpeg" alt="Supplier app station overview with current fuel prices" label="Station overview" />
+                    <PhoneScreenshot src="/screenshots/fueltrack-supplier/update-prices.jpeg" alt="Supplier app screen for updating petrol, diesel, and kerosene prices" label="Price updates" />
+                    <PhoneScreenshot src="/screenshots/fueltrack-supplier/price-history.jpeg" alt="Supplier app report showing fuel price history" label="Price history" />
+                  </div>
+                </section>
+
+                <section className="system-surface customer-surface" aria-labelledby="customer-surface-title">
+                  <div className="surface-copy">
+                    <span>03 · Customer mobile app</span>
+                    <h4 id="customer-surface-title">Fuel discovery experience</h4>
+                    <p>Built for customers to compare prices and find nearby, lower-cost fuel stations.</p>
+                  </div>
+                  <div className="customer-placeholder">
+                    <span className="customer-phone"><Smartphone size={34} /></span>
+                    <strong>Customer app showcase</strong>
+                    <p>Prepared for the customer app screens.</p>
+                  </div>
+                </section>
               </div>
             </article>
             <article className="project-showcase no-image">
