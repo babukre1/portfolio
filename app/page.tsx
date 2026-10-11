@@ -188,6 +188,27 @@ export default function Home() {
                 <div className="project-links"><ProjectLink href="https://property.abubakr.so/">Live Demo</ProjectLink><ProjectLink href="https://github.com/babukre1/SomNOG7-Property-Managment">GitHub</ProjectLink></div>
               </div>
             </article>
+            <article className="workshop-case-study">
+              <header className="workshop-case-header">
+                <div>
+                  <div className="project-badges"><span>SomNOG9 · Software Development Track</span><span>Public workshop resource hub</span></div>
+                  <h3>SomNOG9 Workshop Platform</h3>
+                  <p>Built for the Somali Network Operators Group&apos;s SomNOG9 Software Development Track, this public, no-login platform gives participants one place to follow the three-day programme, access downloadable learning materials, and search structured technical guides.</p>
+                  <div className="workshop-highlights"><span>3-day schedule</span><span>Multi-format resources</span><span>Searchable documentation</span></div>
+                </div>
+                <div className="workshop-meta">
+                  <p className="project-role"><UserRound size={18} /><span><small>My role</small>Developer</span></p>
+                  <div className="tech-list"><Tech>React</Tech><Tech>TypeScript</Tech><Tech>Vite</Tech><Tech>Docusaurus</Tech><Tech>Docker</Tech><Tech>GitHub Actions</Tech></div>
+                  <div className="project-links"><ProjectLink href="https://sd.somnog.so/">Visit Platform</ProjectLink></div>
+                </div>
+              </header>
+              <div className="workshop-gallery">
+                <WebScreenshot src="/screenshots/somnog9-workshop/home.png" alt="SomNOG9 Workshop Platform homepage with links to the schedule and learning materials" label="Workshop home" featured />
+                <WebScreenshot src="/screenshots/somnog9-workshop/schedule.png" alt="Three-day SomNOG9 workshop schedule with session times, topics, and facilitators" label="Three-day schedule" />
+                <WebScreenshot src="/screenshots/somnog9-workshop/materials.png" alt="SomNOG9 workshop materials organized by day with view and download actions" label="Learning materials" />
+                <WebScreenshot src="/screenshots/somnog9-workshop/documentation.png" alt="Searchable SomNOG9 technical documentation with navigation, code examples, and a table of contents" label="Technical documentation" />
+              </div>
+            </article>
             <article className="fuel-case-study">
               <header className="fuel-case-header">
                 <div>
