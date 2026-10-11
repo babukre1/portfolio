@@ -174,7 +174,7 @@ export default function Home() {
                 <p>A digital public service for online vehicle registration, ownership verification, and administrative review.</p>
                 <p className="project-role"><UserRound size={18} /><span><small>My role</small>Lead Developer</span></p>
                 <div className="tech-list"><Tech>Next.js</Tech><Tech>NestJS</Tech><Tech>PostgreSQL</Tech><Tech>Prisma</Tech><Tech>Docker</Tech><Tech>Kubernetes</Tech></div>
-                <div className="project-links"><ProjectLink href="https://vehicle-registration-system-nine.vercel.app/">Live Demo</ProjectLink><ProjectLink href="https://github.com/somnog/Vehicle-Registration-System">GitHub</ProjectLink></div>
+                <div className="project-links"><ProjectLink href="https://vrs.abubakr.so/">Live Demo</ProjectLink><ProjectLink href="https://github.com/somnog/Vehicle-Registration-System">GitHub</ProjectLink></div>
               </div>
             </article>
             <article className="project-showcase">
@@ -185,7 +185,7 @@ export default function Home() {
                 <p>A digital property registration platform for secure land and property workflows, ownership verification, and administrative approval.</p>
                 <p className="project-role"><UserRound size={18} /><span><small>My role</small>Lead Developer</span></p>
                 <div className="tech-list"><Tech>MongoDB</Tech><Tech>Express</Tech><Tech>React</Tech><Tech>Node.js</Tech></div>
-                <div className="project-links"><ProjectLink href="https://propertymanagmentfrontend.vercel.app/">Live Demo</ProjectLink><ProjectLink href="https://github.com/babukre1/SomNOG7-Property-Managment">GitHub</ProjectLink></div>
+                <div className="project-links"><ProjectLink href="https://property.abubakr.so/">Live Demo</ProjectLink><ProjectLink href="https://github.com/babukre1/SomNOG7-Property-Managment">GitHub</ProjectLink></div>
               </div>
             </article>
             <article className="fuel-case-study">
