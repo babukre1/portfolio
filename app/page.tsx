@@ -69,6 +69,17 @@ function PhoneScreenshot({ src, alt, label }: { src: string; alt: string; label:
   );
 }
 
+function WebScreenshot({ src, alt, label, featured = false }: { src: string; alt: string; label: string; featured?: boolean }) {
+  return (
+    <figure className={`web-preview${featured ? " featured" : ""}`}>
+      <a href={src} target="_blank" rel="noreferrer" aria-label={`Open ${label} screenshot`}>
+        <Image src={src} alt={alt} fill sizes={featured ? "(max-width: 760px) 100vw, 72vw" : "(max-width: 760px) 100vw, 24vw"} />
+      </a>
+      <figcaption>{label}</figcaption>
+    </figure>
+  );
+}
+
 export default function Home() {
   return (
     <div className="site-shell">
@@ -196,8 +207,11 @@ export default function Home() {
                   <h4 id="admin-surface-title">Platform administration</h4>
                   <p>Central oversight for suppliers, stations, customer records, pricing activity, maps, and reports.</p>
                 </div>
-                <div className="admin-screenshot">
-                  <Image src="/screenshots/fuel_track_system.png" alt="FuelTrack web administration dashboard" fill sizes="(max-width: 760px) 100vw, 65vw" />
+                <div className="web-gallery">
+                  <WebScreenshot src="/screenshots/fueltrack-admin/dashboard.png" alt="FuelTrack admin dashboard with network totals, recent stations, and supplier status" label="Network overview" featured />
+                  <WebScreenshot src="/screenshots/fueltrack-admin/stations-map.png" alt="FuelTrack admin map showing fuel stations and approval states across Mogadishu" label="Station map" />
+                  <WebScreenshot src="/screenshots/fueltrack-admin/fuel-prices.png" alt="FuelTrack admin fuel price management and city average dashboard" label="Price management" />
+                  <WebScreenshot src="/screenshots/fueltrack-admin/stations.png" alt="FuelTrack admin station management table with status filters and actions" label="Station management" />
                 </div>
               </section>
 
@@ -219,12 +233,12 @@ export default function Home() {
                   <div className="surface-copy">
                     <span>03 · Customer mobile app</span>
                     <h4 id="customer-surface-title">Fuel discovery experience</h4>
-                    <p>Built for customers to compare prices and find nearby, lower-cost fuel stations.</p>
+                    <p>Customers compare nearby prices, review station history, save favorites, and open directions from a dedicated Flutter app.</p>
                   </div>
-                  <div className="customer-placeholder">
-                    <span className="customer-phone"><Smartphone size={34} /></span>
-                    <strong>Customer app showcase</strong>
-                    <p>Prepared for the customer app screens.</p>
+                  <div className="phone-gallery">
+                    <PhoneScreenshot src="/screenshots/fueltrack-customer/nearby-stations.jpg" alt="Customer app listing nearby fuel stations with distance and current prices" label="Compare nearby" />
+                    <PhoneScreenshot src="/screenshots/fueltrack-customer/station-details.jpg" alt="Customer app station details with directions and fuel price history" label="Station details" />
+                    <PhoneScreenshot src="/screenshots/fueltrack-customer/favorites.jpg" alt="Customer app favorites showing saved stations, prices, directions, and history" label="Saved stations" />
                   </div>
                 </section>
               </div>
