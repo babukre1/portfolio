@@ -278,6 +278,58 @@ export default function Home() {
                 </section>
               </div>
             </article>
+            <article className="justclick-case-study">
+              <header className="justclick-case-header">
+                <div>
+                  <p className="project-type">Connected web and mobile education platform</p>
+                  <h3>JustClick — Educational Resource Platform</h3>
+                  <p>A full-stack platform that gives institutions a structured way to manage learning resources and gives students one simple place to discover, revisit, download, and understand course materials.</p>
+                  <p className="system-stack">Web management platform · Flask backend · Student mobile app</p>
+                </div>
+                <div className="justclick-meta">
+                  <p className="project-role"><UserRound size={18} /><span><small>My role</small>Full-Stack Developer</span></p>
+                  <div className="tech-list"><Tech>Flask</Tech><Tech>REST API</Tech><Tech>Web Platform</Tech><Tech>Mobile App</Tech><Tech>AI Assistant</Tech><Tech>Offline Access</Tech></div>
+                </div>
+              </header>
+
+              <section className="justclick-flow" aria-labelledby="justclick-flow-title">
+                <div className="workflow-heading">
+                  <span>Connected experience</span>
+                  <h4 id="justclick-flow-title">One content workflow across web, backend, and mobile</h4>
+                </div>
+                <ol>
+                  <li><span>01</span><div><strong>Institutions organize</strong><p>Courses, semesters, chapters, and learning resources are managed from the web platform.</p></div></li>
+                  <li><span>02</span><div><strong>Flask connects</strong><p>Authentication, academic data, materials, and study activity remain synchronized.</p></div></li>
+                  <li><span>03</span><div><strong>Students study anywhere</strong><p>Students search, save, revisit, download, rate, and ask questions about their materials.</p></div></li>
+                </ol>
+              </section>
+
+              <section className="system-surface justclick-web-surface" aria-labelledby="justclick-web-title">
+                <div className="surface-copy">
+                  <span>01 · Web platform</span>
+                  <h4 id="justclick-web-title">Academic content management</h4>
+                  <p>The public experience introduces the platform, while administrators manage academic structure, upload materials, monitor usage, and support student-facing features from one workspace.</p>
+                </div>
+                <div className="justclick-web-gallery">
+                  <WebScreenshot src="/screenshots/justclick/public-landing.png" alt="JustClick public website introducing centralized course materials and the AI study assistant" label="Public platform" featured />
+                  <WebScreenshot src="/screenshots/justclick/admin-dashboard.png" alt="JustClick administrator dashboard with users, approvals, materials, and analytics" label="Admin overview" />
+                  <WebScreenshot src="/screenshots/justclick/material-upload.png" alt="JustClick administrator workflow for creating and uploading a learning material" label="Material publishing" />
+                </div>
+              </section>
+
+              <section className="system-surface justclick-mobile-surface" aria-labelledby="justclick-mobile-title">
+                <div className="surface-copy">
+                  <span>02 · Student mobile app</span>
+                  <h4 id="justclick-mobile-title">Learning resources on the go</h4>
+                  <p>Students can search and filter course materials, keep favorites, download files for offline study, receive updates, and use an AI assistant grounded in supported course content.</p>
+                </div>
+                <div className="phone-gallery">
+                  <PhoneScreenshot src="/screenshots/justclick/material-catalog.jpeg" alt="JustClick mobile material catalog with search, type filters, semester filters, favorites, and downloads" label="Browse materials" />
+                  <PhoneScreenshot src="/screenshots/justclick/offline-downloads.jpeg" alt="JustClick mobile downloads screen showing course files available for offline study" label="Offline access" />
+                  <PhoneScreenshot src="/screenshots/justclick/ai-assistant.jpeg" alt="JustClick AI study assistant with actions to summarize, explain, quiz, and answer questions from a material" label="AI study assistant" />
+                </div>
+              </section>
+            </article>
             <article className="project-showcase no-image">
               <div className="project-placeholder"><CalendarDays size={38} /><span>Multi-role booking platform</span></div>
               <div className="project-content">
