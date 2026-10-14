@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { projects, type Project } from "./projects/projects";
 import {
   ArrowRight,
   Building2,
@@ -6,7 +8,6 @@ import {
   Code2,
   Database,
   Download,
-  ExternalLink,
   Github,
   Linkedin,
   Mail,
@@ -17,7 +18,6 @@ import {
   Server,
   Smartphone,
   Trophy,
-  UserRound,
   Users,
   Wrench,
 } from "lucide-react";
@@ -50,33 +50,39 @@ function SkillCard({ title, value, icon: Icon }: (typeof skills)[number]) {
   );
 }
 
-function Tech({ children }: { children: React.ReactNode }) {
-  return <span className="tech">{children}</span>;
-}
+function ProjectPreview({ project, index }: { project: Project; index: number }) {
+  const href = `/projects/${project.slug}`;
 
-function ProjectLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return <a href={href} target="_blank" rel="noreferrer">{children} <ExternalLink size={14} /></a>;
-}
-
-function PhoneScreenshot({ src, alt, label }: { src: string; alt: string; label: string }) {
   return (
-    <figure className="phone-preview">
-      <a href={src} target="_blank" rel="noreferrer" aria-label={`Open ${label} screenshot`}>
-        <Image src={src} alt={alt} fill sizes="(max-width: 480px) 28vw, 150px" />
-      </a>
-      <figcaption>{label}</figcaption>
-    </figure>
-  );
-}
-
-function WebScreenshot({ src, alt, label, featured = false }: { src: string; alt: string; label: string; featured?: boolean }) {
-  return (
-    <figure className={`web-preview${featured ? " featured" : ""}`}>
-      <a href={src} target="_blank" rel="noreferrer" aria-label={`Open ${label} screenshot`}>
-        <Image src={src} alt={alt} fill sizes={featured ? "(max-width: 760px) 100vw, 72vw" : "(max-width: 760px) 100vw, 24vw"} />
-      </a>
-      <figcaption>{label}</figcaption>
-    </figure>
+    <Link className="project-index-card" href={href} aria-label={`View ${project.title} details`}>
+      <div className="project-index-copy">
+        <p className="project-index-kicker"><span>{String(index + 1).padStart(2, "0")}</span>{project.category}{project.award && <em>{project.award}</em>}</p>
+        <h3>{project.title}</h3>
+        <p className="project-index-summary">{project.summary}</p>
+        <p className="project-index-role"><span>Role</span>{project.role}</p>
+        <p className="project-index-stack">{project.stack.slice(0, 4).join(" · ")}</p>
+        <span className="project-index-link">View project <ArrowRight size={16} /></span>
+      </div>
+      {project.previewPhones ? (
+        <div className="project-index-media phone-strip">
+          {project.previewPhones.map((screen) => (
+            <figure key={screen.src}>
+              <span className="phone-strip-frame"><Image src={screen.src} alt={screen.alt} fill sizes="(max-width: 760px) 27vw, 150px" /></span>
+              <figcaption>{screen.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : project.cover ? (
+        <div className="project-index-media web-cover">
+          <Image src={project.cover.src} alt={project.cover.alt} fill sizes="(max-width: 760px) 90vw, 48vw" />
+        </div>
+      ) : (
+        <div className="project-index-media hall-preview">
+          <span>One booking system</span>
+          <div><strong>Admin web</strong><strong>Manager app</strong><strong>Customer app</strong></div>
+        </div>
+      )}
+    </Link>
   );
 }
 
@@ -166,183 +172,9 @@ export default function Home() {
         <section className="section content-section" id="projects">
           <SectionHeading label="Projects" title="Featured Projects" description="A selection of real-world systems I&apos;ve built, from digital-government platforms to business tools." />
           <div className="project-list">
-            <article className="project-showcase">
-              <div className="project-shot"><Image src="/screenshots/vrs.png" alt="Vehicle Registration and Verification System homepage" fill sizes="(max-width: 760px) 100vw, 48vw" /></div>
-              <div className="project-content">
-                <div className="project-badges"><span><Trophy size={13} /> SomNOG8 — 1st Place</span><span>Digital Government Project</span></div>
-                <h3>Vehicle Registration &amp; Verification System</h3>
-                <p>A digital public service for online vehicle registration, ownership verification, and administrative review.</p>
-                <p className="project-role"><UserRound size={18} /><span><small>My role</small>Lead Developer</span></p>
-                <div className="tech-list"><Tech>Next.js</Tech><Tech>NestJS</Tech><Tech>PostgreSQL</Tech><Tech>Prisma</Tech><Tech>Docker</Tech><Tech>Kubernetes</Tech></div>
-                <div className="project-links"><ProjectLink href="https://vrs.abubakr.so/">Live Demo</ProjectLink><ProjectLink href="https://github.com/somnog/Vehicle-Registration-System">GitHub</ProjectLink></div>
-              </div>
-            </article>
-            <article className="project-showcase">
-              <div className="project-shot"><Image src="/screenshots/property_system.png" alt="Property Registration System sign-in screen" fill sizes="(max-width: 760px) 100vw, 48vw" /></div>
-              <div className="project-content">
-                <div className="project-badges"><span><Trophy size={13} /> SomNOG7 — 1st Place</span><span>Digital Government Project</span></div>
-                <h3>Property Registration System</h3>
-                <p>A digital property registration platform for secure land and property workflows, ownership verification, and administrative approval.</p>
-                <p className="project-role"><UserRound size={18} /><span><small>My role</small>Lead Developer</span></p>
-                <div className="tech-list"><Tech>MongoDB</Tech><Tech>Express</Tech><Tech>React</Tech><Tech>Node.js</Tech></div>
-                <div className="project-links"><ProjectLink href="https://property.abubakr.so/">Live Demo</ProjectLink><ProjectLink href="https://github.com/babukre1/SomNOG7-Property-Managment">GitHub</ProjectLink></div>
-              </div>
-            </article>
-            <article className="workshop-case-study">
-              <header className="workshop-case-header">
-                <div>
-                  <div className="project-badges"><span>SomNOG9 · Software Development Track</span><span>Public workshop resource hub</span></div>
-                  <h3>SomNOG9 Workshop Platform</h3>
-                  <p>Built for the Somali Network Operators Group&apos;s SomNOG9 Software Development Track, this public, no-login platform gives participants one place to follow the three-day programme, access downloadable learning materials, and search structured technical guides.</p>
-                  <div className="workshop-highlights"><span>3-day schedule</span><span>Multi-format resources</span><span>Searchable documentation</span></div>
-                </div>
-                <div className="workshop-meta">
-                  <p className="project-role"><UserRound size={18} /><span><small>My role</small>Developer</span></p>
-                  <div className="tech-list"><Tech>React</Tech><Tech>TypeScript</Tech><Tech>Vite</Tech><Tech>Docusaurus</Tech><Tech>Docker</Tech><Tech>GitHub Actions</Tech></div>
-                  <div className="project-links"><ProjectLink href="https://sd.somnog.so/">Visit Platform</ProjectLink></div>
-                </div>
-              </header>
-              <div className="workshop-gallery">
-                <WebScreenshot src="/screenshots/somnog9-workshop/home.png" alt="SomNOG9 Workshop Platform homepage with links to the schedule and learning materials" label="Workshop home" featured />
-                <WebScreenshot src="/screenshots/somnog9-workshop/schedule.png" alt="Three-day SomNOG9 workshop schedule with session times, topics, and facilitators" label="Three-day schedule" />
-                <WebScreenshot src="/screenshots/somnog9-workshop/materials.png" alt="SomNOG9 workshop materials organized by day with view and download actions" label="Learning materials" />
-                <WebScreenshot src="/screenshots/somnog9-workshop/documentation.png" alt="Searchable SomNOG9 technical documentation with navigation, code examples, and a table of contents" label="Technical documentation" />
-              </div>
-            </article>
-            <article className="fuel-case-study">
-              <header className="fuel-case-header">
-                <div>
-                  <p className="project-type">Multi-platform industry project</p>
-                  <h3>SomFuel — Fuel Price Tracking System</h3>
-                  <p>A full-stack platform that helps customers find nearby stations and compare current prices while giving suppliers and administrators controlled tools to keep fuel-price data accurate.</p>
-                  <p className="system-stack">2 Flutter apps · React admin dashboard · Node.js/Express API · MongoDB</p>
-                </div>
-                <div className="fuel-meta">
-                  <p className="project-role"><UserRound size={18} /><span><small>My role</small>Software Developer Intern</span></p>
-                  <div className="tech-list"><Tech>React</Tech><Tech>Flutter</Tech><Tech>Node.js</Tech><Tech>Express</Tech><Tech>MongoDB</Tech><Tech>Firebase</Tech></div>
-                </div>
-              </header>
-
-              <section className="price-workflow" aria-labelledby="price-workflow-title">
-                <div className="workflow-heading">
-                  <span>Core workflow</span>
-                  <h4 id="price-workflow-title">From supplier update to trusted customer price</h4>
-                </div>
-                <ol>
-                  <li><span>01</span><div><strong>Supplier submits</strong><p>Current petrol, diesel, or kerosene prices.</p></div></li>
-                  <li><span>02</span><div><strong>Backend validates</strong><p>Server rules identify suspicious price changes.</p></div></li>
-                  <li><span>03</span><div><strong>Admin reviews</strong><p>Flagged updates are checked before publication.</p></div></li>
-                  <li><span>04</span><div><strong>Customers are informed</strong><p>The accepted price goes live, history is preserved, and followers can be notified.</p></div></li>
-                </ol>
-              </section>
-
-              <section className="system-surface admin-surface" aria-labelledby="admin-surface-title">
-                <div className="surface-copy">
-                  <span>01 · Admin web</span>
-                  <h4 id="admin-surface-title">Platform administration</h4>
-                  <p>Administrators manage users, suppliers, stations, prices, maps, reports, and notifications while reviewing suspicious updates flagged by backend validation.</p>
-                </div>
-                <div className="web-gallery">
-                  <WebScreenshot src="/screenshots/fueltrack-admin/dashboard.png" alt="FuelTrack admin dashboard with network totals, recent stations, and supplier status" label="Network overview" featured />
-                  <WebScreenshot src="/screenshots/fueltrack-admin/stations-map.png" alt="FuelTrack admin map showing fuel stations and approval states across Mogadishu" label="Station map" />
-                  <WebScreenshot src="/screenshots/fueltrack-admin/fuel-prices.png" alt="FuelTrack admin fuel price management and city average dashboard" label="Price management" />
-                  <WebScreenshot src="/screenshots/fueltrack-admin/stations.png" alt="FuelTrack admin station management table with status filters and actions" label="Station management" />
-                </div>
-              </section>
-
-              <div className="mobile-surfaces">
-                <section className="system-surface supplier-surface" aria-labelledby="supplier-surface-title">
-                  <div className="surface-copy">
-                    <span>02 · Supplier mobile app</span>
-                    <h4 id="supplier-surface-title">Station and price operations</h4>
-                    <p>Suppliers manage stations and branches, submit current prices, review history and reports, and receive administrative notifications.</p>
-                  </div>
-                  <div className="phone-gallery">
-                    <PhoneScreenshot src="/screenshots/fueltrack-supplier/station-overview.jpeg" alt="Supplier app station overview with current fuel prices" label="Station overview" />
-                    <PhoneScreenshot src="/screenshots/fueltrack-supplier/update-prices.jpeg" alt="Supplier app screen for updating petrol, diesel, and kerosene prices" label="Price updates" />
-                    <PhoneScreenshot src="/screenshots/fueltrack-supplier/price-history.jpeg" alt="Supplier app report showing fuel price history" label="Price history" />
-                  </div>
-                </section>
-
-                <section className="system-surface customer-surface" aria-labelledby="customer-surface-title">
-                  <div className="surface-copy">
-                    <span>03 · Customer mobile app</span>
-                    <h4 id="customer-surface-title">Fuel discovery experience</h4>
-                    <p>Customers search and filter nearby stations, compare prices, review history, save favorites, open directions, and receive price-change alerts.</p>
-                  </div>
-                  <div className="phone-gallery">
-                    <PhoneScreenshot src="/screenshots/fueltrack-customer/nearby-stations.jpg" alt="Customer app listing nearby fuel stations with distance and current prices" label="Compare nearby" />
-                    <PhoneScreenshot src="/screenshots/fueltrack-customer/station-details.jpg" alt="Customer app station details with directions and fuel price history" label="Station details" />
-                    <PhoneScreenshot src="/screenshots/fueltrack-customer/favorites.jpg" alt="Customer app favorites showing saved stations, prices, directions, and history" label="Saved stations" />
-                  </div>
-                </section>
-              </div>
-            </article>
-            <article className="justclick-case-study">
-              <header className="justclick-case-header">
-                <div>
-                  <p className="project-type">Connected web and mobile education platform</p>
-                  <h3>JustClick — Educational Resource Platform</h3>
-                  <p>A full-stack platform that gives institutions a structured way to manage learning resources and gives students one simple place to discover, revisit, download, and understand course materials.</p>
-                  <p className="system-stack">Web management platform · Flask backend · Student mobile app</p>
-                </div>
-                <div className="justclick-meta">
-                  <p className="project-role"><UserRound size={18} /><span><small>My role</small>Full-Stack Developer</span></p>
-                  <div className="tech-list"><Tech>Flask</Tech><Tech>REST API</Tech><Tech>Web Platform</Tech><Tech>Mobile App</Tech><Tech>AI Assistant</Tech><Tech>Offline Access</Tech></div>
-                </div>
-              </header>
-
-              <section className="justclick-flow" aria-labelledby="justclick-flow-title">
-                <div className="workflow-heading">
-                  <span>Connected experience</span>
-                  <h4 id="justclick-flow-title">One content workflow across web, backend, and mobile</h4>
-                </div>
-                <ol>
-                  <li><span>01</span><div><strong>Institutions organize</strong><p>Courses, semesters, chapters, and learning resources are managed from the web platform.</p></div></li>
-                  <li><span>02</span><div><strong>Flask connects</strong><p>Authentication, academic data, materials, and study activity remain synchronized.</p></div></li>
-                  <li><span>03</span><div><strong>Students study anywhere</strong><p>Students search, save, revisit, download, rate, and ask questions about their materials.</p></div></li>
-                </ol>
-              </section>
-
-              <section className="system-surface justclick-web-surface" aria-labelledby="justclick-web-title">
-                <div className="surface-copy">
-                  <span>01 · Web platform</span>
-                  <h4 id="justclick-web-title">Academic content management</h4>
-                  <p>The public experience introduces the platform, while administrators manage academic structure, upload materials, monitor usage, and support student-facing features from one workspace.</p>
-                </div>
-                <div className="justclick-web-gallery">
-                  <WebScreenshot src="/screenshots/justclick/public-landing.png" alt="JustClick public website introducing centralized course materials and the AI study assistant" label="Public platform" featured />
-                  <WebScreenshot src="/screenshots/justclick/admin-dashboard.png" alt="JustClick administrator dashboard with users, approvals, materials, and analytics" label="Admin overview" />
-                  <WebScreenshot src="/screenshots/justclick/material-upload.png" alt="JustClick administrator workflow for creating and uploading a learning material" label="Material publishing" />
-                </div>
-              </section>
-
-              <section className="system-surface justclick-mobile-surface" aria-labelledby="justclick-mobile-title">
-                <div className="surface-copy">
-                  <span>02 · Student mobile app</span>
-                  <h4 id="justclick-mobile-title">Learning resources on the go</h4>
-                  <p>Students can search and filter course materials, keep favorites, download files for offline study, receive updates, and use an AI assistant grounded in supported course content.</p>
-                </div>
-                <div className="phone-gallery">
-                  <PhoneScreenshot src="/screenshots/justclick/material-catalog.jpeg" alt="JustClick mobile material catalog with search, type filters, semester filters, favorites, and downloads" label="Browse materials" />
-                  <PhoneScreenshot src="/screenshots/justclick/offline-downloads.jpeg" alt="JustClick mobile downloads screen showing course files available for offline study" label="Offline access" />
-                  <PhoneScreenshot src="/screenshots/justclick/ai-assistant.jpeg" alt="JustClick AI study assistant with actions to summarize, explain, quiz, and answer questions from a material" label="AI study assistant" />
-                </div>
-              </section>
-            </article>
-            <article className="project-showcase no-image">
-              <div className="project-placeholder"><CalendarDays size={38} /><span>Multi-role booking platform</span></div>
-              <div className="project-content">
-                <p className="project-type">Industry project</p>
-                <h3>Hall Booking System</h3>
-                <p>A multi-role booking platform with separate workflows for administrators, venue managers, and customers.</p>
-                <p className="project-role"><UserRound size={18} /><span><small>My role</small>Software Developer Intern</span></p>
-                <div className="tech-list"><Tech>PostgreSQL</Tech><Tech>Prisma</Tech><Tech>Express</Tech><Tech>React</Tech><Tech>Flutter</Tech></div>
-              </div>
-            </article>
+            {projects.map((project, index) => <ProjectPreview key={project.slug} project={project} index={index} />)}
           </div>
         </section>
-
         <section className="section content-section" id="achievements">
           <SectionHeading label="Achievements" title="Achievements" description="Recognition and participation in competitions, hackathons, and community events." />
           <div className="achievement-list">
